@@ -38,13 +38,13 @@ stages:
       vmImage: 'ubuntu-latest'
     variables:
     - group: TerraformEnvVars
-      steps:
-      - script: |
-          set -e  
+    steps:
+    - script: |
+        set -e  
 
-          terraform init -input=false
-          terraform apply -input=false -auto-approve
-        name: 'RunTerraform'
+        terraform init -input=false
+        terraform apply -input=false -auto-approve
+      name: 'RunTerraform'
         displayName: 'Run Terraform'
         env:
           ARM_CLIENT_ID: $(ARM_CLIENT_ID)
