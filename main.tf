@@ -1,13 +1,38 @@
 
-
 provider "azurerm" {
-    version = "2.5.0"
-    features {}
+  version = "~> 2.56"
+  features {
+  }
 }
-
-
 
 resource "azurerm_resource_group" "tf_test" {
-    name = "tfmainrg"
-    location = "central us"
+  name     = "tfmainrg"
+  location = "southcentralus"
+  tags = {
+    environment = "dev"
+    source      = "Terraform"
+  }
 }
+
+resource "azurerm_container_group" "tfcg_test" {
+  name="weatherapi"
+  location= azurerm_resource_group.tf_test.location
+  resource_group_name = azurerm_resource_group.tf_test.name
+
+  ip_address_type = "public"
+  dns_name_label = "tubotonbaharrywa"
+  os_type = "Linux"
+
+  container {
+    name = "weatherapi"
+    image = "tubotonbaharry/weatherapi"
+      cpu = "1"
+      memory = "1"
+
+      ports {
+        port = 80
+        protocol = "TCP"
+      }
+  }
+}
+
