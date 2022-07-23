@@ -37,9 +37,9 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     variables:
-      -group: TerraformEnvVars
+    - group: TerraformEnvVars
       steps:
-      - script: 
+      - script: |
           set -e  
 
           terraform init -input=false
