@@ -14,6 +14,11 @@ terraform {
     }
     
 }
+
+variable "imagebuild" {
+  type = string 
+  description = "latest image build"
+}
  
 
 resource "azurerm_resource_group" "tf_test" {
@@ -36,7 +41,7 @@ resource "azurerm_container_group" "tfcg_test" {
 
   container {
     name = "weatherapi"
-    image = "tubotonbaharry/weatherapi"
+    image = "tubotonbaharry/weatherapi:${var.imagebuild}"
       cpu = "1"
       memory = "1"
 
