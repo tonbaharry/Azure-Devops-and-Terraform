@@ -1,7 +1,6 @@
 
 provider "azurerm" {
   version = "~> 2.56"
-  source  = "hashicorp/azurerm"
   features {
   }
 }
