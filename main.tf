@@ -1,6 +1,6 @@
 
 provider "azurerm" {
-  version = "~> 2.56"
+  version = "~> 2.50"
   features {
   }
 }
